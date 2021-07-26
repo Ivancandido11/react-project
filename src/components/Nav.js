@@ -13,11 +13,11 @@ const Nav = () => {
       > Home
       </NavLink>
       <NavLink
-          to="/joingame"
+          to="/lobbies"
           exact
           className="nav-menu"
           activeStyle={{background: "white"}}
-      > Join Game
+      > Lobbies
       </NavLink>
       <NavLink
           to="/leaderboards"
