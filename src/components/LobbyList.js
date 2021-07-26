@@ -3,7 +3,7 @@ import Game from "./Game"
 import CreateGameForm from "./CreateGameForm"
 import "../App.css"
 
-const LobbyList = ({ lobbies, onFormSubmit }) => {
+const LobbyList = ({ lobbies, onFormSubmit, onJoinGame }) => {
   const [showForm, setShowForm] = useState(false)
 
   const handleCreateGameClick = () => {
@@ -31,6 +31,7 @@ const LobbyList = ({ lobbies, onFormSubmit }) => {
             <Game
               id={lobby.id}
               key={lobby.id}
+              onJoinGame={onJoinGame}
               players={lobby.players}
               rank={lobby.rank}
               title={lobby.title}

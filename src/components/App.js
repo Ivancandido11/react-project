@@ -8,7 +8,8 @@ import "../App.css"
 
 function App() {
   const [lobbies, setLobbies] = useState([])
-  const URL = "http://localhost:4000/lobbies"
+  const [user, setUser] = useState("")
+  const URL = "http://localhost:4000/lobbies/"
 
   useEffect(() => {
     fetch(URL)
@@ -29,6 +30,36 @@ function App() {
       .then(data => setLobbies([...lobbies, data]))
   }
 
+  const handleJoinGame = (id, players) => {
+    const playersObj = {
+      players: [...players, user]
+    }
+    const configObj = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(playersObj)
+    }
+    fetch(`${URL}${id}`, configObj)
+      .then(r => r.json())
+      .then(data => {
+        const updatedLobbies = lobbies.map(lobby => {
+          if(lobby.id === data.id) return data
+          else return lobby
+        })
+        setLobbies(updatedLobbies)
+      })
+  }
+
+  const handleSignIn = (username) => {
+    setUser(username)
+  }
+
+  const handleSignOut = () => {
+    setUser("")
+  }
+
   return (
     <div className="App">
       <header className="app-logo">
@@ -44,13 +75,18 @@ function App() {
           <LobbyList 
               lobbies={lobbies}
               onFormSubmit={handleCreateGameFormSubmit}
+              onJoinGame={handleJoinGame}
           />
         </Route>
         <Route path="/leaderboards">
           <Leaderboards />
         </Route>
         <Route exact path="/">
-          <Home />
+          <Home 
+              onSignInSubmit={handleSignIn}
+              onSignOut={handleSignOut}
+              user={user}
+          />
         </Route>
       </Switch>
     </div>
