@@ -9,21 +9,21 @@ const Nav = () => {
           to="/"
           exact
           className="nav-menu"
-          activeStyle={{background: "white"}}
+          activeStyle={{background: "#F5F5F5"}}
       > Home
       </NavLink>
       <NavLink
           to="/lobbies"
           exact
           className="nav-menu"
-          activeStyle={{background: "white"}}
+          activeStyle={{background: "#F5F5F5"}}
       > Lobbies
       </NavLink>
       <NavLink
           to="/leaderboards"
           exact
           className="nav-menu"
-          activeStyle={{background: "white"}}
+          activeStyle={{background: "#F5F5F5"}}
       > Leaderboards
       </NavLink>
     </div>

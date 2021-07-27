@@ -18,41 +18,46 @@ const LobbyList = ({ lobbies, onFormSubmit, onJoinGame, onSortClick, onViewGameC
     <div className="main">
       <button onClick={handleCreateGameClick}>Create Game</button>
       {showForm ? <CreateGameForm onFormSubmit={onFormSubmit}/> : null}
-      <table>
-        <tbody>
-          <tr>
-            <th>
-              <h3>Players  <button 
-                  name="players"
-                  onClick={handleSortClick}
-                >Sort</button></h3>
-            </th>
-            <th>
-              <h3>Title  <button 
-                  name="title"
-                  onClick={handleSortClick}
-                >Sort</button></h3>
-            </th>
-            <th>
-              <h3>Rank  <button 
-                  name="rank"
-                  onClick={handleSortClick}
-                >Sort</button></h3>
-            </th>
-          </tr>
-          {lobbies.map(lobby => 
-            <Game
-              id={lobby.id}
-              key={lobby.id}
-              onJoinGame={onJoinGame}
-              onViewGameClick={onViewGameClick}
-              players={lobby.players}
-              rank={lobby.rank}
-              title={lobby.title}
-            />
-          )}
-        </tbody>
-      </table>
+      <div className="divTable">
+        <table className="lobbyTable">
+          <tbody>
+            <tr>
+              <th>
+                <h3>Players  <button 
+                    name="players"
+                    onClick={handleSortClick}
+                  >Sort</button></h3>
+              </th>
+              <th>
+                <h3>Title  <button 
+                    name="title"
+                    onClick={handleSortClick}
+                  >Sort</button></h3>
+              </th>
+              <th>
+                <h3>Rank  <button 
+                    name="rank"
+                    onClick={handleSortClick}
+                  >Sort</button></h3>
+              </th>
+              <th>
+                <h3>Action</h3>
+              </th>
+            </tr>
+            {lobbies.map(lobby => 
+              <Game
+                id={lobby.id}
+                key={lobby.id}
+                onJoinGame={onJoinGame}
+                onViewGameClick={onViewGameClick}
+                players={lobby.players}
+                rank={lobby.rank}
+                title={lobby.title}
+              />
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
   )
 }

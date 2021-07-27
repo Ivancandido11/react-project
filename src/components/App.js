@@ -5,50 +5,32 @@ import LobbyList from "./LobbyList";
 import Leaderboards from "./Leaderboards";
 import GamePage from "./GamePage";
 import Home from "./Home";
+import Adapter from "../Adapter";
 import "../App.css"
 
 function App() {
   const [lobbies, setLobbies] = useState([])
   const [user, setUser] = useState("")
   const [sort, setSort] = useState("")
-  const URL = "http://localhost:4000/lobbies/"
   const history = useHistory()
 
   useEffect(() => {
-    fetch(URL)
-      .then(r => r.json())
+    Adapter.getLobbies()
       .then(data => setLobbies(data))
   }, [])
 
   const handleCreateGameFormSubmit = (newGame) => {
-    console.log(newGame)
-    const configObj = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(newGame)
-    }
-    fetch(URL, configObj)
-      .then(r => r.json())
-      .then(data => setLobbies([...lobbies, data]))
+    Adapter.submit(newGame)
+      .then(data => {
+        console.log(data)
+        setLobbies([...lobbies, data])
+        history.push(`/gamepage/${data.id}`)
+      })
   }
 
   const handleJoinGame = (id, players) => {
     if(user !== "") {
-      const updatedPlayers = players.slice(1, 4)
-      const playersObj = {
-        players: [...updatedPlayers, user]
-      }
-      const configObj = {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(playersObj)
-      }
-      fetch(`${URL}${id}`, configObj)
-        .then(r => r.json())
+      Adapter.joinGame(user, id, players)
         .then(data => {
           const updatedLobbies = lobbies.map(lobby => {
             if(lobby.id === data.id) return data
@@ -64,8 +46,7 @@ function App() {
   }
 
   const finishGame = (id) => {
-    const configObj = {method: "DELETE"}
-    fetch(`${URL}${id}`, configObj)
+    Adapter.delete(id)
       .then(() => {
         const updatedLobbies = lobbies.filter(lobby => lobby.id !== parseInt(id))
         setLobbies(updatedLobbies)
@@ -73,33 +54,23 @@ function App() {
       })
   }
   
-  const handleSortClick = (sort) => {
-    setSort(sort)
-  }
+  const handleSortClick = (sort) => setSort(sort)
 
-  const handleViewGameClick = (id) => {
-    history.push(`/gamepage/${id}`)
-  }
+  const handleViewGameClick = (id) => history.push(`/gamepage/${id}`)
 
-  const handleSignIn = (username) => {
-    setUser(username)
-  }
-
-  const handleSignOut = () => {
-    setUser("")
-  }
-
+  const handleSignIn = (username) => setUser(username)
+  
+  const handleSignOut = () => setUser("")
+  
   const lobbiesToDisplay = () => {
     if (sort === "title") {
       return lobbies.sort((a, b) => a[sort].localeCompare(b[sort]))
-    } else if (sort === ""){
-      return lobbies
-    } else if (sort === "rank") {
-      return lobbies.sort((a, b) => a[sort] - b[sort])
+    } else if (sort === "") { return lobbies
+    } else if (sort === "rank") { return lobbies.sort((a, b) => a[sort] - b[sort])
     } else {
       return lobbies.sort((a, b) => a[sort].filter(player => player !== "").length - b[sort].filter(player => player !== "").length)
     }
-  }    
+  }
 
   return (
     <div className="App">
@@ -125,8 +96,7 @@ function App() {
           <Leaderboards />
         </Route>
         <Route path="/gamepage/:id">
-          <GamePage 
-              lobbies={lobbies}
+          <GamePage
               onFinishGameClick={finishGame}
           />
         </Route>

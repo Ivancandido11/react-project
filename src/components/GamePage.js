@@ -1,15 +1,23 @@
-import React from "react"
-import { useParams } from "react-router-dom"
+import React, { useEffect, useState } from "react"
+import { useParams, useHistory } from "react-router-dom"
+import Adapter from "../Adapter"
 
-const GamePage = ({ lobbies, onFinishGameClick }) => {
+const GamePage = ({ onFinishGameClick }) => {
+  const [gamePage, setGamePage] = useState(null)
   const params = useParams()
+  const history = useHistory()
 
-  const currentLobby = lobbies.filter(lobby => lobby.id === parseInt(params.id))
+  useEffect(() => {
+    Adapter.getGamePage(params.id)
+    .then(data => setGamePage(data))
+  }, [params.id])
+  
+  if (!gamePage) return <h2>Loading...</h2>
 
-  const playersInGame = currentLobby[0].players.filter(player => player !== "")
+  const playersInGame = gamePage.players.filter(player => player !== "")
 
   const displayPlayers = () => (
-    currentLobby[0].players.map((player, index) => {
+    gamePage.players.map((player, index) => {
       if (player) {
         return (
           <h3 
@@ -28,6 +36,10 @@ const GamePage = ({ lobbies, onFinishGameClick }) => {
     })
   )
 
+  const handleBackToLobby = () => {
+    history.push("/lobbies")
+  }
+
   const handleDeleteClick = () => {
     onFinishGameClick(params.id)
   }
@@ -36,13 +48,18 @@ const GamePage = ({ lobbies, onFinishGameClick }) => {
     <div className="mainGamePage">
       <div className="gamePage">
         {displayPlayers()}
+        <h2 className="title">Room Name: {gamePage.title}</h2>
+        <h2 className="rank">Rank: {gamePage.rank}</h2>
         <img 
           src="http://i.imgur.com/MZKZOle.jpg" 
           alt="Catan Board"
           className="board"
         />
       </div>
-      {playersInGame.length === 4 ? <button onClick={handleDeleteClick}>Finish Game</button> : null}
+      {playersInGame.length === 4 ? 
+        <button onClick={handleDeleteClick}>Finish Game</button> : 
+        <button onClick={handleBackToLobby}>Back to Lobby</button>
+      }
     </div>
   )
 }

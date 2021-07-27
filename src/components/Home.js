@@ -10,11 +10,13 @@ const Home = ({ onSignInSubmit, onSignOut, user }) => {
   const signIn = (
     <form onSubmit={signInSubmit}>
       <input
+        className="input"
         name="signIn"
         placeholder="Username ..."
         type="text"
       />
       <input
+        className="button"
         name="submit"
         type="submit" 
         value="Sign In"
@@ -24,7 +26,7 @@ const Home = ({ onSignInSubmit, onSignOut, user }) => {
 
   return (
     <div className="main">
-      <h1>{user ? `Welcome, ${user}!` : "Welcome, Please Sign In!"}</h1>
+      <h1>{user ? `Welcome, ${user}!` : "Welcome, please sign in!"}</h1>
       {user ? <button onClick={onSignOut} >Sign Out</button> : signIn }
     </div>
   )

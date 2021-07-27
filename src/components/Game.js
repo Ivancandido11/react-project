@@ -23,7 +23,7 @@ const Game = (props) => {
   }
 
   return (
-    <tr>
+    <tr className="lobbies">
       <td>{playersInGame.length}</td>
       <td>{props.title}</td>
       <td>{props.rank}</td>

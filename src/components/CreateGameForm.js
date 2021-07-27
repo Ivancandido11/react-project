@@ -38,6 +38,7 @@ const CreateGameForm = ({ onFormSubmit }) => {
       <form onSubmit={handleFormSubmit} >
         <h3>Create a New Lobby!</h3>
         <input
+          className="input"
           name="title"
           onChange={handleFormChange}
           placeholder="Enter lobby name ..."
@@ -45,6 +46,7 @@ const CreateGameForm = ({ onFormSubmit }) => {
           value={formData.title}
         />
         <input
+          className="input"
           name="rank"
           onChange={handleFormChange}
           placeholder="Minimum rank"
@@ -52,6 +54,7 @@ const CreateGameForm = ({ onFormSubmit }) => {
           value={formData.rank}
         />
         <input
+          className="button"
           name="submit"
           type="submit"
           value="Create New Lobby"
