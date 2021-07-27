@@ -7,6 +7,16 @@
   border-radius: 25px;
 }
 
+.mainGamePage {
+  grid-area: main;
+  background: #9A7AA0;
+  list-style-type: none;
+  padding: 10px;
+  border-radius: 25px;
+  width: fit-content;
+}
+
+
 .app-logo {
   grid-area: header;
   color: white;
@@ -48,11 +58,57 @@
   padding-right: 100px;
   background-color: #F5F5F5;
   display: grid;
-  grid-template-columns: 200px 30px auto auto;
+  grid-template-columns: 200px 100px auto auto;
   grid-template-rows: auto;
   grid-template-areas: 
     "header header header header"
     "sidebar . main main"
     "footer footer footer footer";
   row-gap: 15px;
+}
+
+
+.board {
+  height: 600px;
+  width: 800px;
+  grid-area: board;
+}
+
+.player1 {
+  grid-area: player1;
+  text-align: center;
+}
+
+.player2 {
+  grid-area: player2;
+  max-width: fit-content;
+  min-width: 100px;
+  text-align: center;
+  padding-right: 10px;
+}
+
+.player3 {
+  grid-area: player3;
+  max-width: fit-content;
+  min-width: 100px;
+  text-align: center;
+  padding-left: 10px;
+}
+
+.player4 {
+  grid-area: player4;
+  text-align: center;
+}
+
+.gamePage {
+  display: grid;
+  grid-template-columns: auto 400px 400px auto;
+  grid-template-rows: 50px auto 50px;
+  grid-template-areas: 
+    ". player1 player1 ."
+    "player2 board board player3"
+    ". player4 player4 .";
+  row-gap: 15px;
+  grid-area: main;
+  place-items: center
 }

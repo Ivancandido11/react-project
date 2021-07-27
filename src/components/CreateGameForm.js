@@ -2,7 +2,12 @@ import React, { useState } from "react"
 
 const CreateGameForm = ({ onFormSubmit }) => {
   const [formData, setFormData] = useState({
-    players: [],
+    players: [
+      "",
+      "",
+      "",
+      ""
+    ],
     title: "",
     rank: ""
   })
@@ -17,7 +22,12 @@ const CreateGameForm = ({ onFormSubmit }) => {
     e.preventDefault()
     onFormSubmit({...formData, rank: parseInt(formData.rank)})
     setFormData({
-      players: [],
+      players: [
+        "",
+        "",
+        "",
+        ""
+      ],
       title: "",
       rank: ""
     })
