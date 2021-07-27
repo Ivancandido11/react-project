@@ -24,10 +24,10 @@
     },
     {
       "players": [
-        "",
         "Ivan",
         "kurstynstorms",
-        "kurstynstorms"
+        "kurstynstorms",
+        "Coopa"
       ],
       "title": "Kurstyns Powerful Room ",
       "rank": 20,
@@ -241,6 +241,26 @@
       "title": "popopops",
       "rank": 49,
       "id": 25
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Zasd11",
+      "password": "ivan1",
+      "rank": 100
+    },
+    {
+      "id": 2,
+      "name": "Ivan",
+      "password": "ivan1",
+      "rank": 10
+    },
+    {
+      "name": "Coopa",
+      "password": "poopyface",
+      "rank": 0,
+      "id": 3
     }
   ]
 }

@@ -6,10 +6,12 @@ import Leaderboards from "./Leaderboards";
 import GamePage from "./GamePage";
 import Home from "./Home";
 import Adapter from "../Adapter";
+import CreateAccount from "./CreateAccount";
 import "../App.css"
 
 function App() {
   const [lobbies, setLobbies] = useState([])
+  const [allUsers, setAllUsers] = useState([])
   const [user, setUser] = useState("")
   const [sort, setSort] = useState("")
   const history = useHistory()
@@ -17,12 +19,13 @@ function App() {
   useEffect(() => {
     Adapter.getLobbies()
       .then(data => setLobbies(data))
+    Adapter.getUsers()
+      .then(data => setAllUsers(data))
   }, [])
 
   const handleCreateGameFormSubmit = (newGame) => {
     Adapter.submit(newGame)
       .then(data => {
-        console.log(data)
         setLobbies([...lobbies, data])
         history.push(`/gamepage/${data.id}`)
       })
@@ -54,12 +57,31 @@ function App() {
       })
   }
   
+  const handleCreateAccountSubmit = (newAccount) => {
+    Adapter.createAccount(newAccount)
+      .then(data => {
+        setAllUsers([...allUsers, data])
+        setUser(data.name)
+        history.push("/")
+      })
+  }
+
+  const handleSignIn = (username, password) => {
+    const currentUser = allUsers.filter(loggedInUser => loggedInUser.name === username)
+    if (currentUser.length > 0 && currentUser[0].password === password) {
+      setUser(currentUser[0].name)
+    } else if (currentUser.length > 0 && currentUser[0].password !== password){
+      alert("Username and Password are case-sensitive. Wrong password!")
+    } else {
+      alert("Please create an account!")
+      history.push("/createaccount")
+    }
+  }
+ 
   const handleSortClick = (sort) => setSort(sort)
 
   const handleViewGameClick = (id) => history.push(`/gamepage/${id}`)
 
-  const handleSignIn = (username) => setUser(username)
-  
   const handleSignOut = () => setUser("")
   
   const lobbiesToDisplay = () => {
@@ -99,6 +121,9 @@ function App() {
           <GamePage
               onFinishGameClick={finishGame}
           />
+        </Route>
+        <Route path="/createaccount">
+          <CreateAccount onCreateSubmit={handleCreateAccountSubmit}/>
         </Route>
         <Route exact path="/">
           <Home 

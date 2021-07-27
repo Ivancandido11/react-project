@@ -1,4 +1,5 @@
 const URL = "http://localhost:4000/lobbies/"
+const userURL = "http://localhost:4000/users/"
 
 class Adapter {
   static getGamePage (id) {
@@ -42,6 +43,23 @@ class Adapter {
   static delete (id) {
     const configObj = {method: "DELETE"}
     return fetch(`${URL}${id}`, configObj)
+  }
+
+  static getUsers () {
+    return fetch(userURL)
+      .then(r => r.json())
+  }
+
+  static createAccount (newAccount) {
+    const configObj = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newAccount)
+    }
+    return fetch(userURL, configObj)
+      .then(r => r.json())
   }
 }
 
