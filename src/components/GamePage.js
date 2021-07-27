@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { useParams, useHistory } from "react-router-dom"
 import Adapter from "../Adapter"
 
-const GamePage = ({ onFinishGameClick }) => {
+const GamePage = ({ onFinishGameClick, onJoinGame }) => {
   const [gamePage, setGamePage] = useState(null)
   const params = useParams()
   const history = useHistory()
@@ -12,6 +12,11 @@ const GamePage = ({ onFinishGameClick }) => {
     .then(data => setGamePage(data))
   }, [params.id])
   
+  const handleJoinClick = () => {
+    onJoinGame(gamePage.id, gamePage.players)
+    history.go(0)
+  }
+
   if (!gamePage) return <h2>Loading...</h2>
 
   const playersInGame = gamePage.players.filter(player => player !== "")
@@ -58,7 +63,10 @@ const GamePage = ({ onFinishGameClick }) => {
       </div>
       {playersInGame.length === 4 ? 
         <button onClick={handleDeleteClick}>Finish Game</button> : 
+        <>
         <button onClick={handleBackToLobby}>Back to Lobby</button>
+        <button onClick={handleJoinClick}>Join</button>
+        </>
       }
     </div>
   )

@@ -4,7 +4,7 @@ const CreateAccount = ({ onCreateSubmit }) => {
   const [userInfo, setUserInfo] = useState({
     name: "",
     password: "",
-    rank: 0
+    points: 0
   })
 
   const handleUserChange = (e) => {
@@ -15,11 +15,11 @@ const CreateAccount = ({ onCreateSubmit }) => {
 
   const createAccountSubmit = (e) => {
     e.preventDefault()
-    onCreateSubmit({...userInfo, rank: parseInt(userInfo.rank)})
+    onCreateSubmit({...userInfo, points: parseInt(userInfo.points)})
     setUserInfo({
       name: "",
       password: "",
-      rank: 0
+      points: 0
     })
   }
 
@@ -38,7 +38,7 @@ const CreateAccount = ({ onCreateSubmit }) => {
         name="password"
         onChange={handleUserChange}
         placeholder="Password ..."
-        type="text"
+        type="password"
         value={userInfo.password}
       />
       <input

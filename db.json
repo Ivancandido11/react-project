@@ -13,17 +13,6 @@
     },
     {
       "players": [
-        "Jay",
-        "Z",
-        "PoopahTroopas",
-        "ZasD11"
-      ],
-      "title": "Kings",
-      "rank": 12,
-      "id": 3
-    },
-    {
-      "players": [
         "Ivan",
         "kurstynstorms",
         "kurstynstorms",
@@ -36,9 +25,9 @@
     {
       "players": [
         "",
-        "",
         "pingpong",
-        "pingpong"
+        "pingpong",
+        "Zasd11"
       ],
       "title": "Room 10",
       "rank": 15,
@@ -48,8 +37,8 @@
       "players": [
         "",
         "",
-        "",
-        ""
+        "Zasd11",
+        "Zasd11"
       ],
       "title": "MoneyTeam",
       "rank": 9,
@@ -60,7 +49,7 @@
         "",
         "",
         "",
-        ""
+        "Zasd11"
       ],
       "title": "RobbersRUs",
       "rank": 17,
@@ -81,8 +70,8 @@
       "players": [
         "",
         "",
-        "",
-        "Erica"
+        "Erica",
+        "ewinne"
       ],
       "title": "Ericas",
       "rank": 14,
@@ -104,7 +93,7 @@
         "",
         "",
         "",
-        ""
+        "RudeChowder"
       ],
       "title": "Sheeps 4 Sale",
       "rank": 9,
@@ -115,7 +104,7 @@
         "",
         "",
         "",
-        ""
+        "robgentile"
       ],
       "title": "No Quitters",
       "rank": 17,
@@ -170,7 +159,7 @@
         "",
         "",
         "",
-        ""
+        "robgentile"
       ],
       "title": "DevTeam",
       "rank": 17,
@@ -191,8 +180,8 @@
       "players": [
         "",
         "",
-        "",
-        "Erica"
+        "Erica",
+        "ewinne"
       ],
       "title": "Yolo",
       "rank": 14,
@@ -241,6 +230,28 @@
       "title": "popopops",
       "rank": 49,
       "id": 25
+    },
+    {
+      "players": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "title": "Natac",
+      "rank": 8,
+      "id": 26
+    },
+    {
+      "players": [
+        "",
+        "",
+        "",
+        "ewinne"
+      ],
+      "title": "Copa America",
+      "rank": 1,
+      "id": 27
     }
   ],
   "users": [
@@ -248,19 +259,43 @@
       "id": 1,
       "name": "Zasd11",
       "password": "ivan1",
-      "rank": 100
+      "points": 100
     },
     {
       "id": 2,
       "name": "Ivan",
       "password": "ivan1",
-      "rank": 10
+      "points": 10
     },
     {
       "name": "Coopa",
       "password": "poopyface",
-      "rank": 0,
+      "points": 0,
       "id": 3
+    },
+    {
+      "name": "KurstynStorms",
+      "password": "poopyface",
+      "points": 0,
+      "id": 4
+    },
+    {
+      "name": "RudeChowder",
+      "password": "password1",
+      "points": 0,
+      "id": 5
+    },
+    {
+      "name": "robgentile",
+      "password": "123456",
+      "points": 0,
+      "id": 6
+    },
+    {
+      "name": "ewinne",
+      "password": "ivan",
+      "points": 0,
+      "id": 7
     }
   ]
 }

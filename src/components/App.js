@@ -115,11 +115,12 @@ function App() {
           />
         </Route>
         <Route path="/leaderboards">
-          <Leaderboards />
+          <Leaderboards users={allUsers}/>
         </Route>
         <Route path="/gamepage/:id">
           <GamePage
               onFinishGameClick={finishGame}
+              onJoinGame={handleJoinGame}
           />
         </Route>
         <Route path="/createaccount">

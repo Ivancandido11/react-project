@@ -20,7 +20,7 @@ const Home = ({ onSignInSubmit, onSignOut, user }) => {
         className="input"
         name="password"
         placeholder="Password ..."
-        type="text"
+        type="password"
       />
       <input
         className="button"

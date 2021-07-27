@@ -8,7 +8,6 @@ const Game = (props) => {
     props.onJoinGame(props.id, props.players)
   }
   
-
   const fullGame = () => {
     if (playersInGame.length < 4) {
       return (
