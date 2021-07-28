@@ -9,7 +9,7 @@ class Adapter {
 
   static getLobbies () {
     return fetch(URL)
-    .then(r => r.json())
+      .then(r => r.json())
   }
 
   static submit (newGame) {
@@ -26,22 +26,22 @@ class Adapter {
 
   static joinGame (user, id, players) {
     const updatedPlayers = players.slice(1, 4)
-      const playersObj = {
-        players: [...updatedPlayers, user]
-      }
-      const configObj = {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(playersObj)
-      }
-      return fetch(`${URL}${id}`, configObj)
-        .then(r => r.json())
+    const playersObj = {
+      players: [...updatedPlayers, user]
+    }
+    const configObj = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(playersObj)
+    }
+    return fetch(`${URL}${id}`, configObj)
+      .then(r => r.json())
   }
 
   static delete (id) {
-    const configObj = {method: "DELETE"}
+    const configObj = { method: "DELETE" }
     return fetch(`${URL}${id}`, configObj)
   }
 

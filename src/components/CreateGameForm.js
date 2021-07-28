@@ -15,12 +15,12 @@ const CreateGameForm = ({ onFormSubmit }) => {
   const handleFormChange = (e) => {
     const key = e.target.name
     const value = e.target.value
-    setFormData({...formData, [key]:value})
+    setFormData({ ...formData, [key]: value })
   }
 
   const handleFormSubmit = (e) => {
     e.preventDefault()
-    onFormSubmit({...formData, rank: parseInt(formData.rank)})
+    onFormSubmit({ ...formData, rank: parseInt(formData.rank) })
     setFormData({
       players: [
         "",

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from "react"
 
 const CreateAccount = ({ onCreateSubmit }) => {
@@ -11,13 +12,13 @@ const CreateAccount = ({ onCreateSubmit }) => {
   const handleUserChange = (e) => {
     const key = e.target.name
     const value = e.target.value
-    setUserInfo({...userInfo, [key]: value})
+    setUserInfo({ ...userInfo, [key]: value })
   }
 
   const createAccountSubmit = (e) => {
     e.preventDefault()
     if (userInfo.name.length > 0 && userInfo.password.length > 0) {
-      onCreateSubmit({...userInfo, points: parseInt(userInfo.points)})
+      onCreateSubmit({ ...userInfo, points: parseInt(userInfo.points) })
       setUserInfo({
         name: "",
         password: "",
@@ -50,15 +51,15 @@ const CreateAccount = ({ onCreateSubmit }) => {
         type={showPassword ? "text" : "password"}
         value={userInfo.password}
       />
-      <input 
+      <input
         checked={showPassword}
         onChange={handleShowPassword}
-        type="checkbox" 
+        type="checkbox"
       />Show
       <input
         className="button"
         name="submit"
-        type="submit" 
+        type="submit"
         value="Create Account"
       />
     </form>

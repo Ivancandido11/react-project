@@ -1,12 +1,13 @@
+/* eslint-disable react/prop-types */
 import React from "react"
 
 const Game = (props) => {
   const playersInGame = props.players.filter(player => player !== "")
-  
+
   const handleJoinClick = () => {
     props.onJoinGame(props.id, props.players)
   }
-  
+
   const fullGame = () => {
     if (playersInGame.length < 4) {
       return (

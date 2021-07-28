@@ -1,5 +1,6 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from "react"
-import { useHistory  } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import "../App.css"
 
 const Home = ({ onSignInSubmit, onSignOut, user }) => {
@@ -33,15 +34,15 @@ const Home = ({ onSignInSubmit, onSignOut, user }) => {
         placeholder="Password ..."
         type={showPassword ? "text" : "password"}
       />
-      <input 
+      <input
         checked={showPassword}
         onChange={handleShowPassword}
-        type="checkbox" 
+        type="checkbox"
       />Show
       <input
         className="button"
         name="submit"
-        type="submit" 
+        type="submit"
         value="Sign In"
       />
       <button onClick={handleCreateAccount}>Create Account</button>

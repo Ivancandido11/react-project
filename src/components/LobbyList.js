@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from "react"
 import Game from "./Game"
 import CreateGameForm from "./CreateGameForm"
@@ -23,19 +24,19 @@ const LobbyList = ({ lobbies, onFormSubmit, onJoinGame, onSortClick, onViewGameC
           <tbody>
             <tr>
               <th>
-                <h3>Players  <button 
+                <h3>Players  <button
                     name="players"
                     onClick={handleSortClick}
                   >Sort</button></h3>
               </th>
               <th>
-                <h3>Title  <button 
+                <h3>Title  <button
                     name="title"
                     onClick={handleSortClick}
                   >Sort</button></h3>
               </th>
               <th>
-                <h3>Rank  <button 
+                <h3>Rank  <button
                     name="rank"
                     onClick={handleSortClick}
                   >Sort</button></h3>
@@ -44,7 +45,7 @@ const LobbyList = ({ lobbies, onFormSubmit, onJoinGame, onSortClick, onViewGameC
                 <h3>Action</h3>
               </th>
             </tr>
-            {lobbies.map(lobby => 
+            {lobbies.map(lobby =>
               <Game
                 id={lobby.id}
                 key={lobby.id}

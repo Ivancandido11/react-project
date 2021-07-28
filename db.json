@@ -3,28 +3,6 @@
     {
       "players": [
         "",
-        "Zasd11",
-        "ZasD11",
-        "ZasD11"
-      ],
-      "title": "RobbersRUs",
-      "rank": 17,
-      "id": 9
-    },
-    {
-      "players": [
-        "pingpong",
-        "Coopa",
-        "Coopa",
-        "Coopa"
-      ],
-      "title": "LongestRoadSquad",
-      "rank": 1,
-      "id": 10
-    },
-    {
-      "players": [
-        "",
         "",
         "Erica",
         "ewinne"
@@ -82,17 +60,6 @@
         "",
         "",
         "",
-        "Erica"
-      ],
-      "title": "Salties",
-      "rank": 14,
-      "id": 16
-    },
-    {
-      "players": [
-        "",
-        "",
-        "",
         ""
       ],
       "title": "ScrubsOnly",
@@ -115,17 +82,6 @@
         "",
         "",
         "",
-        "robgentile"
-      ],
-      "title": "DevTeam",
-      "rank": 17,
-      "id": 19
-    },
-    {
-      "players": [
-        "",
-        "",
-        "",
         "dongles"
       ],
       "title": "RoadsSuck",
@@ -136,19 +92,8 @@
       "players": [
         "",
         "",
-        "Erica",
-        "ewinne"
-      ],
-      "title": "Yolo",
-      "rank": 14,
-      "id": 21
-    },
-    {
-      "players": [
         "",
-        "",
-        "",
-        ""
+        "KurstynStorms"
       ],
       "title": "OWS God Squad",
       "rank": 20,
@@ -183,42 +128,86 @@
         "",
         ""
       ],
-      "title": "popopops",
-      "rank": 49,
-      "id": 25
-    },
-    {
-      "players": [
-        "",
-        "",
-        "",
-        ""
-      ],
-      "title": "Natac",
-      "rank": 8,
-      "id": 26
-    },
-    {
-      "players": [
-        "",
-        "",
-        "ewinne",
-        "kyleisdecent"
-      ],
-      "title": "Copa America",
-      "rank": 1,
-      "id": 27
-    },
-    {
-      "players": [
-        "",
-        "",
-        "",
-        ""
-      ],
       "title": "Room 10",
       "rank": 2,
       "id": 28
+    },
+    {
+      "players": [
+        "",
+        "",
+        "",
+        "KurstynStorms"
+      ],
+      "title": "Kurstyns Powerful Room ",
+      "rank": 20,
+      "id": 29
+    },
+    {
+      "players": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "title": "Winterfell",
+      "rank": 30,
+      "id": 30
+    },
+    {
+      "players": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "title": "King's Landing",
+      "rank": 12,
+      "id": 31
+    },
+    {
+      "players": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "title": "Suits",
+      "rank": 15,
+      "id": 33
+    },
+    {
+      "players": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "title": "The Pit ",
+      "rank": 10,
+      "id": 34
+    },
+    {
+      "players": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "title": "The Pit 2",
+      "rank": 11,
+      "id": 35
+    },
+    {
+      "players": [
+        "",
+        "",
+        "bigJ4200",
+        "bigJ4200"
+      ],
+      "title": "Jon's best room name #1",
+      "rank": 1000000,
+      "id": 36
     }
   ],
   "users": [
@@ -243,7 +232,7 @@
     {
       "name": "KurstynStorms",
       "password": "poopyface",
-      "points": 0,
+      "points": 20,
       "id": 4
     },
     {
@@ -299,6 +288,36 @@
       "password": "ivanishot",
       "points": 10,
       "id": 13
+    },
+    {
+      "name": "Gordo",
+      "password": "milkman",
+      "points": 10,
+      "id": 14
+    },
+    {
+      "name": "dion.theroulde",
+      "password": "6969",
+      "points": 10,
+      "id": 15
+    },
+    {
+      "name": "IWillBeatIvan",
+      "password": "Iwin",
+      "points": 20,
+      "id": 16
+    },
+    {
+      "name": "bigJ4200",
+      "password": "password",
+      "points": 100,
+      "id": 17
+    },
+    {
+      "name": "Sebdude",
+      "password": "1234",
+      "points": 30,
+      "id": 18
     }
   ]
 }

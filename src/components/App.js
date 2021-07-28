@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react"
-import { Route, Switch, useHistory } from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom"
 import Nav from "./Nav"
-import LobbyList from "./LobbyList";
-import Leaderboards from "./Leaderboards";
-import GamePage from "./GamePage";
-import Home from "./Home";
-import Adapter from "../Adapter";
-import CreateAccount from "./CreateAccount";
+import LobbyList from "./LobbyList"
+import Leaderboards from "./Leaderboards"
+import GamePage from "./GamePage"
+import Home from "./Home"
+import Adapter from "../Adapter"
+import CreateAccount from "./CreateAccount"
 import "../App.css"
 
-function App() {
+function App () {
   const [lobbies, setLobbies] = useState([])
   const [allUsers, setAllUsers] = useState([])
   const [user, setUser] = useState("")
@@ -32,11 +32,11 @@ function App() {
   }
 
   const handleJoinGame = (id, players) => {
-    if(user !== "") {
+    if (user !== "") {
       Adapter.joinGame(user, id, players)
         .then(data => {
           const updatedLobbies = lobbies.map(lobby => {
-            if(lobby.id === data.id) return data
+            if (lobby.id === data.id) return data
             else return lobby
           })
           setLobbies(updatedLobbies)
@@ -56,7 +56,7 @@ function App() {
         history.push("/lobbies")
       })
   }
-  
+
   const handleCreateAccountSubmit = (newAccount) => {
     Adapter.createAccount(newAccount)
       .then(data => {
@@ -70,25 +70,27 @@ function App() {
     const currentUser = allUsers.filter(loggedInUser => loggedInUser.name.toLowerCase() === username.toLowerCase())
     if (currentUser.length > 0 && currentUser[0].password === password) {
       setUser(currentUser[0].name)
-    } else if (currentUser.length > 0 && currentUser[0].password !== password){
+    } else if (currentUser.length > 0 && currentUser[0].password !== password) {
       alert("Password is case-sensitive. Wrong password!")
     } else {
       alert("Please create an account!")
       history.push("/createaccount")
     }
   }
- 
+
   const handleSortClick = (sort) => setSort(sort)
 
   const handleViewGameClick = (id) => history.push(`/gamepage/${id}`)
 
   const handleSignOut = () => setUser("")
-  
+
   const lobbiesToDisplay = () => {
     if (sort === "title") {
       return lobbies.sort((a, b) => a[sort].localeCompare(b[sort]))
-    } else if (sort === "") { return lobbies
-    } else if (sort === "rank") { return lobbies.sort((a, b) => a[sort] - b[sort])
+    } else if (sort === "") {
+      return lobbies
+    } else if (sort === "rank") {
+      return lobbies.sort((a, b) => a[sort] - b[sort])
     } else {
       return lobbies.sort((a, b) => a[sort].filter(player => player !== "").length - b[sort].filter(player => player !== "").length)
     }
@@ -120,7 +122,7 @@ function App() {
   return (
     <div className="App">
       <header className="app-logo">
-        <img 
+        <img
           alt="catan logo"
           className="logo"
           src="https://logo.clearbit.com/catan.com"
@@ -129,7 +131,7 @@ function App() {
       <Nav />
       <Switch>
         <Route path="/lobbies">
-          <LobbyList 
+          <LobbyList
               lobbies={lobbiesToDisplay()}
               onFormSubmit={handleCreateGameFormSubmit}
               onJoinGame={handleJoinGame}
@@ -152,7 +154,7 @@ function App() {
           <CreateAccount onCreateSubmit={handleCreateAccountSubmit}/>
         </Route>
         <Route exact path="/">
-          <Home 
+          <Home
               onSignInSubmit={handleSignIn}
               onSignOut={handleSignOut}
               user={user}
@@ -160,7 +162,7 @@ function App() {
         </Route>
       </Switch>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
