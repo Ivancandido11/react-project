@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 
 const CreateAccount = ({ onCreateSubmit }) => {
+  const [showPassword, setShowPassword] = useState(false)
   const [userInfo, setUserInfo] = useState({
     name: "",
     password: "",
@@ -15,12 +16,20 @@ const CreateAccount = ({ onCreateSubmit }) => {
 
   const createAccountSubmit = (e) => {
     e.preventDefault()
-    onCreateSubmit({...userInfo, points: parseInt(userInfo.points)})
-    setUserInfo({
-      name: "",
-      password: "",
-      points: 0
-    })
+    if (userInfo.name.length > 0 && userInfo.password.length > 0) {
+      onCreateSubmit({...userInfo, points: parseInt(userInfo.points)})
+      setUserInfo({
+        name: "",
+        password: "",
+        points: 0
+      })
+    } else {
+      alert("Please fill in username and password!")
+    }
+  }
+
+  const handleShowPassword = () => {
+    setShowPassword(showPassword => !showPassword)
   }
 
   const createAccount = (
@@ -38,9 +47,14 @@ const CreateAccount = ({ onCreateSubmit }) => {
         name="password"
         onChange={handleUserChange}
         placeholder="Password ..."
-        type="password"
+        type={showPassword ? "text" : "password"}
         value={userInfo.password}
       />
+      <input 
+        checked={showPassword}
+        onClick={handleShowPassword}
+        type="checkbox" 
+      />Show
       <input
         className="button"
         name="submit"

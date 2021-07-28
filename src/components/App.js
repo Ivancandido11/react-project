@@ -67,11 +67,11 @@ function App() {
   }
 
   const handleSignIn = (username, password) => {
-    const currentUser = allUsers.filter(loggedInUser => loggedInUser.name === username)
+    const currentUser = allUsers.filter(loggedInUser => loggedInUser.name.toLowerCase() === username.toLowerCase())
     if (currentUser.length > 0 && currentUser[0].password === password) {
       setUser(currentUser[0].name)
     } else if (currentUser.length > 0 && currentUser[0].password !== password){
-      alert("Username and Password are case-sensitive. Wrong password!")
+      alert("Password is case-sensitive. Wrong password!")
     } else {
       alert("Please create an account!")
       history.push("/createaccount")
@@ -91,6 +91,29 @@ function App() {
     } else if (sort === "rank") { return lobbies.sort((a, b) => a[sort] - b[sort])
     } else {
       return lobbies.sort((a, b) => a[sort].filter(player => player !== "").length - b[sort].filter(player => player !== "").length)
+    }
+  }
+
+  const addPoints = (players) => {
+    const currentUser = allUsers.filter(loggedInUser => loggedInUser.name === user)
+    if (currentUser.length > 0) {
+      const playerIn = players.filter(player => player === user)
+      if (playerIn[0] === user) {
+        Adapter.addPoints(currentUser[0].id, currentUser)
+          .then(data => {
+            const updatedUsers = allUsers.map(user => {
+              if (data.id === user.id) return data
+              else return user
+            })
+            setAllUsers(updatedUsers)
+            alert("Game Finished! You got points!")
+          })
+      } else {
+        alert("Game Finished!")
+      }
+    } else {
+      alert("Please Sign In!")
+      history.push("/")
     }
   }
 
@@ -119,8 +142,10 @@ function App() {
         </Route>
         <Route path="/gamepage/:id">
           <GamePage
+              onAddPoints={addPoints}
               onFinishGameClick={finishGame}
               onJoinGame={handleJoinGame}
+              user={user}
           />
         </Route>
         <Route path="/createaccount">

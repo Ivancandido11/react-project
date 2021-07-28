@@ -130,7 +130,8 @@ tr, th, td {
 
 .title {
   grid-area: title;
-  text-align: center;  
+  text-align: center; 
+  width: fit-content;
 }
 
 .rank {
@@ -138,12 +139,17 @@ tr, th, td {
   text-align: center;  
 }
 
+.user {
+  grid-area: user;
+  text-align: center;    
+}
+
 .gamePage {
   display: grid;
   grid-template-columns: auto 400px 400px auto;
   grid-template-rows: 50px 50px auto 50px;
   grid-template-areas: 
-    ". title rank ."
+    ". title rank user"
     ". player1 player1 ."
     "player2 board board player3"
     ". player4 player4 .";
@@ -155,6 +161,7 @@ tr, th, td {
 button, .button {
   background-color: #778472;
   border-radius: 25px;
+  height: 40px;
 }
 
 button:hover, .button:hover {
@@ -167,4 +174,22 @@ button:hover, .button:hover {
   background-color: #F5F5F5;
   border-radius: 25px;
   padding: 4px;
+  height: 30px;
+}
+
+.leaderboardOl {
+  padding-left: 100px;
+  padding-right: 100px;
+  place-items: center;
+}
+
+li {
+  padding-top: 5px;
+  border-bottom: 1px solid #F5F5F5;
+  border-collapse: collapse;
+  height: 65px;
+}
+
+li::marker {
+  font-size: 1.2em;
 }

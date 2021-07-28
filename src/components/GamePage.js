@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { useParams, useHistory } from "react-router-dom"
 import Adapter from "../Adapter"
 
-const GamePage = ({ onFinishGameClick, onJoinGame }) => {
+const GamePage = ({ onAddPoints, onFinishGameClick, onJoinGame, user }) => {
   const [gamePage, setGamePage] = useState(null)
   const params = useParams()
   const history = useHistory()
@@ -47,6 +47,12 @@ const GamePage = ({ onFinishGameClick, onJoinGame }) => {
 
   const handleDeleteClick = () => {
     onFinishGameClick(params.id)
+    onAddPoints(gamePage.players)
+  }
+
+  const handleLogin = () => {
+    alert("Please log in then come back!")
+    history.push("/")
   }
 
   return (
@@ -55,6 +61,7 @@ const GamePage = ({ onFinishGameClick, onJoinGame }) => {
         {displayPlayers()}
         <h2 className="title">Room Name: {gamePage.title}</h2>
         <h2 className="rank">Rank: {gamePage.rank}</h2>
+        {user ? <h2 className="user">{user}</h2> : <button className="user" onClick={handleLogin}>Login</button>}
         <img 
           src="http://i.imgur.com/MZKZOle.jpg" 
           alt="Catan Board"

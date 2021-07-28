@@ -61,6 +61,21 @@ class Adapter {
     return fetch(userURL, configObj)
       .then(r => r.json())
   }
+
+  static addPoints (id, player) {
+    const playerObj = {
+      points: player[0].points + 10
+    }
+    const configObj = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(playerObj)
+    }
+    return fetch(`${userURL}${id}`, configObj)
+      .then(r => r.json())
+  }
 }
 
 export default Adapter

@@ -1,28 +1,6 @@
 {
   "lobbies": [
     {
-      "id": 1,
-      "players": [
-        "ZasD",
-        "Moca",
-        "Backpack",
-        "ZasD11"
-      ],
-      "title": "OGMC",
-      "rank": 15
-    },
-    {
-      "players": [
-        "Ivan",
-        "kurstynstorms",
-        "kurstynstorms",
-        "Coopa"
-      ],
-      "title": "Kurstyns Powerful Room ",
-      "rank": 20,
-      "id": 6
-    },
-    {
       "players": [
         "",
         "pingpong",
@@ -257,9 +235,9 @@
   "users": [
     {
       "id": 1,
-      "name": "Zasd11",
+      "name": "ZasD11",
       "password": "ivan1",
-      "points": 100
+      "points": 130
     },
     {
       "id": 2,
@@ -296,6 +274,30 @@
       "password": "ivan",
       "points": 0,
       "id": 7
+    },
+    {
+      "name": "CodingJesus",
+      "password": "1234",
+      "points": 300,
+      "id": 8
+    },
+    {
+      "name": "RobbingKnights",
+      "password": "12345",
+      "points": 450,
+      "id": 9
+    },
+    {
+      "name": "Sup",
+      "password": "1234",
+      "points": 690,
+      "id": 10
+    },
+    {
+      "name": "loser",
+      "password": "12122",
+      "points": 0,
+      "id": 11
     }
   ]
 }

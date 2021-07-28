@@ -1,11 +1,22 @@
-import React from "react"
+import React, { useState } from "react"
+import { useHistory  } from "react-router-dom"
 import "../App.css"
 
 const Home = ({ onSignInSubmit, onSignOut, user }) => {
+  const [showPassword, setShowPassword] = useState(false)
+  const history = useHistory()
 
   const signInSubmit = (e) => {
     e.preventDefault()
     onSignInSubmit(e.target.username.value, e.target.password.value)
+  }
+
+  const handleCreateAccount = () => {
+    history.push("/createaccount")
+  }
+
+  const handleShowPassword = () => {
+    setShowPassword(showPassword => !showPassword)
   }
 
   const signIn = (
@@ -20,14 +31,20 @@ const Home = ({ onSignInSubmit, onSignOut, user }) => {
         className="input"
         name="password"
         placeholder="Password ..."
-        type="password"
+        type={showPassword ? "text" : "password"}
       />
+      <input 
+        checked={showPassword}
+        onClick={handleShowPassword}
+        type="checkbox" 
+      />Show
       <input
         className="button"
         name="submit"
         type="submit" 
         value="Sign In"
       />
+      <button onClick={handleCreateAccount}>Create Account</button>
     </form>
   )
 
