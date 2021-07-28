@@ -1,7 +1,6 @@
 import React from "react"
 
 const Game = (props) => {
-  
   const playersInGame = props.players.filter(player => player !== "")
   
   const handleJoinClick = () => {

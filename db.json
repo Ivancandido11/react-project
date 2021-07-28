@@ -3,31 +3,9 @@
     {
       "players": [
         "",
-        "pingpong",
-        "pingpong",
-        "Zasd11"
-      ],
-      "title": "Room 10",
-      "rank": 15,
-      "id": 7
-    },
-    {
-      "players": [
-        "",
-        "",
         "Zasd11",
-        "Zasd11"
-      ],
-      "title": "MoneyTeam",
-      "rank": 9,
-      "id": 8
-    },
-    {
-      "players": [
-        "",
-        "",
-        "",
-        "Zasd11"
+        "ZasD11",
+        "ZasD11"
       ],
       "title": "RobbersRUs",
       "rank": 17,
@@ -35,10 +13,10 @@
     },
     {
       "players": [
-        "",
-        "",
-        "",
-        "pingpong"
+        "pingpong",
+        "Coopa",
+        "Coopa",
+        "Coopa"
       ],
       "title": "LongestRoadSquad",
       "rank": 1,
@@ -224,12 +202,23 @@
       "players": [
         "",
         "",
-        "",
-        "ewinne"
+        "ewinne",
+        "kyleisdecent"
       ],
       "title": "Copa America",
       "rank": 1,
       "id": 27
+    },
+    {
+      "players": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "title": "Room 10",
+      "rank": 2,
+      "id": 28
     }
   ],
   "users": [
@@ -237,7 +226,7 @@
       "id": 1,
       "name": "ZasD11",
       "password": "ivan1",
-      "points": 130
+      "points": 140
     },
     {
       "id": 2,
@@ -298,6 +287,18 @@
       "password": "12122",
       "points": 0,
       "id": 11
+    },
+    {
+      "name": "Osama Bin laden",
+      "password": "123",
+      "points": 0,
+      "id": 12
+    },
+    {
+      "name": "kyleisdecent",
+      "password": "ivanishot",
+      "points": 10,
+      "id": 13
     }
   ]
 }

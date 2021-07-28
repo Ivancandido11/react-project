@@ -13,8 +13,13 @@ const GamePage = ({ onAddPoints, onFinishGameClick, onJoinGame, user }) => {
   }, [params.id])
   
   const handleJoinClick = () => {
-    onJoinGame(gamePage.id, gamePage.players)
-    history.go(0)
+    if(user !== "") {
+      Adapter.joinGame(user, params.id, gamePage.players)
+        .then(data => setGamePage(data))
+    } else {
+      alert("Please sign in!")
+      history.push("/")
+    }
   }
 
   if (!gamePage) return <h2>Loading...</h2>

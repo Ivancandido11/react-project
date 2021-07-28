@@ -35,7 +35,7 @@ const Home = ({ onSignInSubmit, onSignOut, user }) => {
       />
       <input 
         checked={showPassword}
-        onClick={handleShowPassword}
+        onChange={handleShowPassword}
         type="checkbox" 
       />Show
       <input

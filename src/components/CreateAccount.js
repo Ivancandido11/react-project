@@ -52,7 +52,7 @@ const CreateAccount = ({ onCreateSubmit }) => {
       />
       <input 
         checked={showPassword}
-        onClick={handleShowPassword}
+        onChange={handleShowPassword}
         type="checkbox" 
       />Show
       <input
