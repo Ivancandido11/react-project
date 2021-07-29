@@ -23,7 +23,7 @@ function App () {
       .then(data => setAllUsers(data))
     Adapter.getLoggedInUser()
       .then(data => setUser(data))
-  }, [])
+  }, [user])
 
   const handleCreateGameFormSubmit = (newGame) => {
     Adapter.submit(newGame)
@@ -112,7 +112,8 @@ function App () {
           .then(data => {
             const updatedUsers = allUsers.map(user => {
               if (data.id === user.id) {
-                setUser(data)
+                Adapter.signIn(data)
+                  .then(data => setUser(data))
                 return data
               } else return user
             })

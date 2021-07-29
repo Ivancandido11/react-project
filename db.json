@@ -1,9 +1,9 @@
 {
   "loggedInUser": {
-    "id": 1,
-    "name": "",
-    "password": "",
-    "points": 0
+    "id": 2,
+    "name": "Ivan",
+    "password": "ivan1",
+    "points": 50
   },
   "lobbies": [
     {
@@ -22,17 +22,6 @@
         "",
         "",
         "",
-        "robgentile"
-      ],
-      "title": "No Quitters",
-      "rank": 17,
-      "id": 14
-    },
-    {
-      "players": [
-        "",
-        "",
-        "",
         ""
       ],
       "title": "TableTalk",
@@ -44,7 +33,7 @@
         "",
         "",
         "",
-        ""
+        "KurstynStorms"
       ],
       "title": "ScrubsOnly",
       "rank": 15,
@@ -76,7 +65,7 @@
       "players": [
         "",
         "",
-        "",
+        "KurstynStorms",
         "KurstynStorms"
       ],
       "title": "OWS God Squad",
@@ -115,17 +104,6 @@
       "title": "Room 10",
       "rank": 2,
       "id": 28
-    },
-    {
-      "players": [
-        "",
-        "",
-        "",
-        "KurstynStorms"
-      ],
-      "title": "Kurstyns Powerful Room ",
-      "rank": 20,
-      "id": 29
     },
     {
       "players": [
@@ -194,7 +172,7 @@
       "id": 2,
       "name": "Ivan",
       "password": "ivan1",
-      "points": 10
+      "points": 50
     },
     {
       "name": "Coopa",
@@ -205,7 +183,7 @@
     {
       "name": "KurstynStorms",
       "password": "poopyface",
-      "points": 20,
+      "points": 30,
       "id": 4
     },
     {
