@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react"
 import { useParams, useHistory } from "react-router-dom"
 import Adapter from "../Adapter"
 
-const GamePage = ({ onAddPoints, onFinishGameClick, user }) => {
+const GamePage = ({ onAddPoints, onFinishGameClick, onJoinGame, user }) => {
   const [gamePage, setGamePage] = useState(null)
   const params = useParams()
   const history = useHistory()
@@ -11,12 +11,11 @@ const GamePage = ({ onAddPoints, onFinishGameClick, user }) => {
   useEffect(() => {
     Adapter.getGamePage(params.id)
       .then(data => setGamePage(data))
-  }, [params.id])
+  }, [params.id, gamePage])
 
   const handleJoinClick = () => {
     if (user.name !== "") {
-      Adapter.joinGame(user.name, params.id, gamePage.players)
-        .then(data => setGamePage(data))
+      onJoinGame(gamePage.id, gamePage.players)
     } else {
       alert("Please sign in!")
       history.push("/")
