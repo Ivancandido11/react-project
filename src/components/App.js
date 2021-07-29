@@ -32,8 +32,8 @@ function App () {
   }
 
   const handleJoinGame = (id, players) => {
-    if (user !== "") {
-      Adapter.joinGame(user, id, players)
+    if (user.name !== "") {
+      Adapter.joinGame(user.name, id, players)
         .then(data => {
           const updatedLobbies = lobbies.map(lobby => {
             if (lobby.id === data.id) return data
@@ -61,7 +61,7 @@ function App () {
     Adapter.createAccount(newAccount)
       .then(data => {
         setAllUsers([...allUsers, data])
-        setUser(data.name)
+        setUser(data)
         history.push("/")
       })
   }
@@ -69,7 +69,7 @@ function App () {
   const handleSignIn = (username, password) => {
     const currentUser = allUsers.filter(loggedInUser => loggedInUser.name.toLowerCase() === username.toLowerCase())
     if (currentUser.length > 0 && currentUser[0].password === password) {
-      setUser(currentUser[0].name)
+      setUser(currentUser[0])
     } else if (currentUser.length > 0 && currentUser[0].password !== password) {
       alert("Password is case-sensitive. Wrong password!")
     } else {
@@ -97,15 +97,17 @@ function App () {
   }
 
   const addPoints = (players) => {
-    const currentUser = allUsers.filter(loggedInUser => loggedInUser.name === user)
+    const currentUser = allUsers.filter(loggedInUser => loggedInUser.name === user.name)
     if (currentUser.length > 0) {
-      const playerIn = players.filter(player => player === user)
-      if (playerIn[0] === user) {
+      const playerIn = players.filter(player => player === user.name)
+      if (playerIn[0] === user.name) {
         Adapter.addPoints(currentUser[0].id, currentUser)
           .then(data => {
             const updatedUsers = allUsers.map(user => {
-              if (data.id === user.id) return data
-              else return user
+              if (data.id === user.id) {
+                setUser(data)
+                return data
+              } else return user
             })
             setAllUsers(updatedUsers)
             alert("Game Finished! You got points!")
@@ -137,6 +139,7 @@ function App () {
               onJoinGame={handleJoinGame}
               onSortClick={handleSortClick}
               onViewGameClick={handleViewGameClick}
+              user={user}
           />
         </Route>
         <Route path="/leaderboards">
@@ -151,7 +154,10 @@ function App () {
           />
         </Route>
         <Route path="/createaccount">
-          <CreateAccount onCreateSubmit={handleCreateAccountSubmit}/>
+          <CreateAccount
+              onCreateSubmit={handleCreateAccountSubmit}
+              users={allUsers}
+          />
         </Route>
         <Route exact path="/">
           <Home

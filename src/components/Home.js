@@ -16,11 +16,15 @@ const Home = ({ onSignInSubmit, onSignOut, user }) => {
     history.push("/createaccount")
   }
 
+  const handleLobbiesClick = () => {
+    history.push("/lobbies")
+  }
+
   const handleShowPassword = () => {
     setShowPassword(showPassword => !showPassword)
   }
 
-  const signIn = (
+  const notSignedIn = (
     <form onSubmit={signInSubmit}>
       <input
         className="input"
@@ -45,14 +49,27 @@ const Home = ({ onSignInSubmit, onSignOut, user }) => {
         type="submit"
         value="Sign In"
       />
+      <br />
+      <h3>Dont have an account?</h3>
       <button onClick={handleCreateAccount}>Create Account</button>
     </form>
   )
 
+  const signedIn = (
+    <div>
+      <h2>Welcome {user.name}!</h2>
+      {user.points > 0
+        ? `You currently have earned ${user.points} points!`
+        : "You currently have no points."}
+      <br />
+      <button onClick={handleLobbiesClick}>Lobbies</button>
+    </div>
+  )
+
   return (
     <div className="main">
-      <h1>{user ? `Welcome, ${user}!` : "Welcome, please sign in!"}</h1>
-      {user ? <button onClick={onSignOut} >Sign Out</button> : signIn }
+      <h1>{user ? signedIn : "Welcome, please sign in!"}</h1>
+      {user ? <button onClick={onSignOut} >Sign Out</button> : notSignedIn }
     </div>
   )
 }

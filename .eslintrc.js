@@ -18,6 +18,7 @@ module.exports = {
     "react"
   ],
   rules: {
-    quotes: ["error", "double"]
+    quotes: ["error", "double"],
+    "react/prop-types": 0
   }
 }

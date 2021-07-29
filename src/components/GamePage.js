@@ -14,8 +14,8 @@ const GamePage = ({ onAddPoints, onFinishGameClick, user }) => {
   }, [params.id])
 
   const handleJoinClick = () => {
-    if (user !== "") {
-      Adapter.joinGame(user, params.id, gamePage.players)
+    if (user.name !== "") {
+      Adapter.joinGame(user.name, params.id, gamePage.players)
         .then(data => setGamePage(data))
     } else {
       alert("Please sign in!")
@@ -67,7 +67,7 @@ const GamePage = ({ onAddPoints, onFinishGameClick, user }) => {
         {displayPlayers()}
         <h2 className="title">Room Name: {gamePage.title}</h2>
         <h2 className="rank">Rank: {gamePage.rank}</h2>
-        {user ? <h2 className="user">{user}</h2> : <button className="user" onClick={handleLogin}>Login</button>}
+        {user ? <h2 className="user">{user.name}</h2> : <button className="user" onClick={handleLogin}>Login</button>}
         <img
           src="http://i.imgur.com/MZKZOle.jpg"
           alt="Catan Board"

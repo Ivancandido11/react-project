@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from "react"
 
-const CreateAccount = ({ onCreateSubmit }) => {
+const CreateAccount = ({ onCreateSubmit, users }) => {
   const [showPassword, setShowPassword] = useState(false)
   const [userInfo, setUserInfo] = useState({
     name: "",
@@ -17,13 +17,17 @@ const CreateAccount = ({ onCreateSubmit }) => {
 
   const createAccountSubmit = (e) => {
     e.preventDefault()
-    if (userInfo.name.length > 0 && userInfo.password.length > 0) {
+    if (userInfo.name.length > 0 && userInfo.password.length > 0 &&
+      !(users.find(user => user.name.toLowerCase() === userInfo.name))) {
       onCreateSubmit({ ...userInfo, points: parseInt(userInfo.points) })
       setUserInfo({
         name: "",
         password: "",
         points: 0
       })
+    } else if (users.find(user => user.name.toLowerCase() === userInfo.name)) {
+      const existingUser = users.find(user => user.name.toLowerCase() === userInfo.name)
+      alert(`The username ${existingUser.name} already exists!`)
     } else {
       alert("Please fill in username and password!")
     }

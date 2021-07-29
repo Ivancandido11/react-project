@@ -4,17 +4,6 @@
       "players": [
         "",
         "",
-        "Erica",
-        "ewinne"
-      ],
-      "title": "Ericas",
-      "rank": 14,
-      "id": 11
-    },
-    {
-      "players": [
-        "",
-        "",
         "",
         ""
       ],
@@ -197,17 +186,6 @@
       "title": "The Pit 2",
       "rank": 11,
       "id": 35
-    },
-    {
-      "players": [
-        "",
-        "",
-        "bigJ4200",
-        "bigJ4200"
-      ],
-      "title": "Jon's best room name #1",
-      "rank": 1000000,
-      "id": 36
     }
   ],
   "users": [
@@ -215,7 +193,7 @@
       "id": 1,
       "name": "ZasD11",
       "password": "ivan1",
-      "points": 140
+      "points": 170
     },
     {
       "id": 2,
@@ -318,6 +296,12 @@
       "password": "1234",
       "points": 30,
       "id": 18
+    },
+    {
+      "name": "Moca",
+      "password": "Mocacola@328",
+      "points": 20,
+      "id": 19
     }
   ]
 }
