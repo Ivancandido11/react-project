@@ -18,15 +18,15 @@ const CreateAccount = ({ onCreateSubmit, users }) => {
   const createAccountSubmit = (e) => {
     e.preventDefault()
     if (userInfo.name.length > 0 && userInfo.password.length > 0 &&
-      !(users.find(user => user.name.toLowerCase() === userInfo.name))) {
+      !(users.find(user => user.name.toLowerCase() === userInfo.name.toLowerCase()))) {
       onCreateSubmit({ ...userInfo, points: parseInt(userInfo.points) })
       setUserInfo({
         name: "",
         password: "",
         points: 0
       })
-    } else if (users.find(user => user.name.toLowerCase() === userInfo.name)) {
-      const existingUser = users.find(user => user.name.toLowerCase() === userInfo.name)
+    } else if (users.find(user => user.name.toLowerCase() === userInfo.name.toLowerCase())) {
+      const existingUser = users.find(user => user.name.toLowerCase() === userInfo.name.toLowerCase())
       alert(`The username ${existingUser.name} already exists!`)
     } else {
       alert("Please fill in username and password!")

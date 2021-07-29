@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react"
 import { useParams, useHistory } from "react-router-dom"
 import Adapter from "../Adapter"
 
-const GamePage = ({ onAddPoints, onFinishGameClick, onJoinGame, user }) => {
+const GamePage = ({ cookies, onAddPoints, onFinishGameClick, onJoinGame }) => {
   const [gamePage, setGamePage] = useState(null)
   const params = useParams()
   const history = useHistory()
@@ -14,7 +14,7 @@ const GamePage = ({ onAddPoints, onFinishGameClick, onJoinGame, user }) => {
   }, [params.id, gamePage])
 
   const handleJoinClick = () => {
-    if (user.name !== "") {
+    if (cookies.name) {
       onJoinGame(gamePage.id, gamePage.players)
     } else {
       alert("Please sign in!")
@@ -66,7 +66,7 @@ const GamePage = ({ onAddPoints, onFinishGameClick, onJoinGame, user }) => {
         {displayPlayers()}
         <h2 className="title">Room Name: {gamePage.title}</h2>
         <h2 className="rank">Rank: {gamePage.rank}</h2>
-        {user.name !== "" ? <h2 className="user">{user.name}</h2> : <button className="user" onClick={handleLogin}>Login</button>}
+        {cookies.name ? <h2 className="user">{cookies.name}</h2> : <button className="user" onClick={handleLogin}>Login</button>}
         <img
           src="http://i.imgur.com/MZKZOle.jpg"
           alt="Catan Board"

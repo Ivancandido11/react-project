@@ -1,22 +1,11 @@
 {
   "loggedInUser": {
-    "id": 2,
-    "name": "Ivan",
-    "password": "ivan1",
-    "points": 50
+    "id": 1,
+    "name": "",
+    "password": "",
+    "points": 0
   },
   "lobbies": [
-    {
-      "players": [
-        "",
-        "",
-        "",
-        "RudeChowder"
-      ],
-      "title": "Sheeps 4 Sale",
-      "rank": 9,
-      "id": 13
-    },
     {
       "players": [
         "",
@@ -159,6 +148,94 @@
       "title": "The Pit 2",
       "rank": 11,
       "id": 35
+    },
+    {
+      "players": [
+        "",
+        "",
+        "",
+        "ZasD11"
+      ],
+      "title": "Rome",
+      "rank": 10,
+      "id": 36
+    },
+    {
+      "players": [
+        "",
+        "",
+        "",
+        "ZasD11"
+      ],
+      "title": "Greece",
+      "rank": 10,
+      "id": 37
+    },
+    {
+      "players": [
+        "",
+        "",
+        "",
+        "ZasD11"
+      ],
+      "title": "Italia",
+      "rank": 12,
+      "id": 38
+    },
+    {
+      "players": [
+        "",
+        "",
+        "",
+        "ZasD11"
+      ],
+      "title": "Babylon",
+      "rank": 14,
+      "id": 39
+    },
+    {
+      "players": [
+        "",
+        "",
+        "",
+        "ZasD11"
+      ],
+      "title": "Bonus",
+      "rank": 13,
+      "id": 40
+    },
+    {
+      "players": [
+        "",
+        "",
+        "",
+        "ZasD11"
+      ],
+      "title": "Home",
+      "rank": 22,
+      "id": 41
+    },
+    {
+      "players": [
+        "",
+        "",
+        "",
+        "ZasD11"
+      ],
+      "title": "France",
+      "rank": 23,
+      "id": 42
+    },
+    {
+      "players": [
+        "",
+        "",
+        "",
+        "ZasD11"
+      ],
+      "title": "Road Noobs",
+      "rank": 1,
+      "id": 43
     }
   ],
   "users": [
@@ -166,13 +243,13 @@
       "id": 1,
       "name": "ZasD11",
       "password": "ivan1",
-      "points": 200
+      "points": 240
     },
     {
       "id": 2,
       "name": "Ivan",
       "password": "ivan1",
-      "points": 50
+      "points": 60
     },
     {
       "name": "Coopa",
@@ -281,6 +358,18 @@
       "password": "yo",
       "points": 0,
       "id": 20
+    },
+    {
+      "name": "yoloboi",
+      "password": "35344",
+      "points": 0,
+      "id": 21
+    },
+    {
+      "name": "ayyyyooo",
+      "password": "323232",
+      "points": 0,
+      "id": 22
     }
   ]
 }

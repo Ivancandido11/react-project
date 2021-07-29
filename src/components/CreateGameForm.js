@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { useHistory } from "react-router-dom"
 
-const CreateGameForm = ({ onFormSubmit, user }) => {
+const CreateGameForm = ({ cookies, onFormSubmit }) => {
   const history = useHistory()
 
   const [formData, setFormData] = useState({
@@ -23,7 +23,7 @@ const CreateGameForm = ({ onFormSubmit, user }) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault()
-    if (formData.title.length > 0 && parseInt(formData.rank) > 0 && user) {
+    if (formData.title.length > 0 && parseInt(formData.rank) > 0 && cookies.name) {
       onFormSubmit({ ...formData, rank: parseInt(formData.rank) })
       setFormData({
         players: [
@@ -35,7 +35,7 @@ const CreateGameForm = ({ onFormSubmit, user }) => {
         title: "",
         rank: ""
       })
-    } else if (user.name !== "") {
+    } else if (!cookies.name) {
       alert("Please log in to create a lobby")
       history.push("/")
     } else {

@@ -1,6 +1,5 @@
 const URL = "http://localhost:4000/lobbies/"
 const userURL = "http://localhost:4000/users/"
-const loggedUserURL = "http://localhost:4000/loggedInUser/"
 
 class Adapter {
   static getGamePage (id) {
@@ -65,7 +64,7 @@ class Adapter {
 
   static addPoints (id, player) {
     const playerObj = {
-      points: player[0].points + 10
+      points: player.points + 10
     }
     const configObj = {
       method: "PATCH",
@@ -75,41 +74,6 @@ class Adapter {
       body: JSON.stringify(playerObj)
     }
     return fetch(`${userURL}${id}`, configObj)
-      .then(r => r.json())
-  }
-
-  static getLoggedInUser () {
-    return fetch(loggedUserURL)
-      .then(r => r.json())
-  }
-
-  static signIn (user) {
-    const configObj = {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(user)
-    }
-    return fetch(loggedUserURL, configObj)
-      .then(r => r.json())
-  }
-
-  static signOut () {
-    const signedOut = {
-      id: 1,
-      name: "",
-      password: "",
-      points: 0
-    }
-    const configObj = {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(signedOut)
-    }
-    return fetch(loggedUserURL, configObj)
       .then(r => r.json())
   }
 }

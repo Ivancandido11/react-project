@@ -3,7 +3,7 @@ import React, { useState } from "react"
 import { useHistory } from "react-router-dom"
 import "../App.css"
 
-const Home = ({ onSignInSubmit, onSignOut, user }) => {
+const Home = ({ cookies, onSignInSubmit, onSignOut }) => {
   const [showPassword, setShowPassword] = useState(false)
   const history = useHistory()
 
@@ -57,9 +57,9 @@ const Home = ({ onSignInSubmit, onSignOut, user }) => {
 
   const signedIn = (
     <div>
-      <h2>Welcome {user.name}!</h2>
-      {user.points > 0
-        ? `You currently have earned ${user.points} points!`
+      <h2>Welcome {cookies.name}!</h2>
+      {cookies.points > 0
+        ? `You currently have earned ${cookies.points} points!`
         : "You currently have no points."}
       <br />
       <button onClick={handleLobbiesClick}>Lobbies</button>
@@ -68,8 +68,8 @@ const Home = ({ onSignInSubmit, onSignOut, user }) => {
 
   return (
     <div className="main">
-      <h1>{user.name !== "" ? signedIn : "Welcome, please sign in!"}</h1>
-      {user.name !== "" ? <button onClick={onSignOut} >Sign Out</button> : notSignedIn }
+      <h1>{cookies.name !== "" ? signedIn : "Welcome, please sign in!"}</h1>
+      {cookies.name !== "" ? <button onClick={onSignOut} >Sign Out</button> : notSignedIn }
     </div>
   )
 }

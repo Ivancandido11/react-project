@@ -7,36 +7,42 @@ import GamePage from "./GamePage"
 import Home from "./Home"
 import Adapter from "../Adapter"
 import CreateAccount from "./CreateAccount"
+import { useCookies } from "react-cookie"
 import "../App.css"
 
 function App () {
   const [lobbies, setLobbies] = useState([])
   const [allUsers, setAllUsers] = useState([])
-  const [user, setUser] = useState("")
   const [sort, setSort] = useState("")
+  const [cookies, setCookies] = useCookies(["user"])
   const history = useHistory()
+  const loggedOut = {
+    id: 0,
+    name: "",
+    password: "",
+    points: 0
+  }
 
   useEffect(() => {
     Adapter.getLobbies()
       .then(data => setLobbies(data))
     Adapter.getUsers()
       .then(data => setAllUsers(data))
-    Adapter.getLoggedInUser()
-      .then(data => setUser(data))
-  }, [user])
+  }, [])
 
   const handleCreateGameFormSubmit = (newGame) => {
     Adapter.submit(newGame)
       .then(data => {
-        setLobbies([...lobbies, data])
         handleJoinGame(data.id, data.players)
+        setLobbies([...lobbies, data])
         history.push(`/gamepage/${data.id}`)
+        history.go(0)
       })
   }
 
   const handleJoinGame = (id, players) => {
-    if (user.name !== "") {
-      Adapter.joinGame(user.name, id, players)
+    if (cookies.user.name) {
+      Adapter.joinGame(cookies.user.name, id, players)
         .then(data => {
           const updatedLobbies = lobbies.map(lobby => {
             if (lobby.id === data.id) return data
@@ -64,7 +70,7 @@ function App () {
     Adapter.createAccount(newAccount)
       .then(data => {
         setAllUsers([...allUsers, data])
-        setUser(data)
+        setCookies("user", data, { path: "/" })
         history.push("/")
       })
   }
@@ -72,8 +78,7 @@ function App () {
   const handleSignIn = (username, password) => {
     const currentUser = allUsers.filter(loggedInUser => loggedInUser.name.toLowerCase() === username.toLowerCase())
     if (currentUser.length > 0 && currentUser[0].password === password) {
-      Adapter.signIn(currentUser[0])
-        .then(data => setUser(data))
+      setCookies("user", currentUser[0], { path: "/" })
     } else if (currentUser.length > 0 && currentUser[0].password !== password) {
       alert("Password is case-sensitive. Wrong password!")
     } else {
@@ -87,8 +92,7 @@ function App () {
   const handleViewGameClick = (id) => history.push(`/gamepage/${id}`)
 
   const handleSignOut = () => {
-    Adapter.signOut()
-      .then(data => setUser(data))
+    setCookies("user", loggedOut, { path: "/" })
   }
 
   const lobbiesToDisplay = () => {
@@ -104,16 +108,14 @@ function App () {
   }
 
   const addPoints = (players) => {
-    const currentUser = allUsers.filter(loggedInUser => loggedInUser.name === user.name)
-    if (currentUser.length > 0) {
-      const playerIn = players.filter(player => player === user.name)
-      if (playerIn[0] === user.name) {
-        Adapter.addPoints(currentUser[0].id, currentUser)
+    if (cookies.user.name) {
+      const playerIn = players.filter(player => player === cookies.user.name)
+      if (playerIn[0] === cookies.user.name) {
+        Adapter.addPoints(cookies.user.id, cookies.user)
           .then(data => {
             const updatedUsers = allUsers.map(user => {
               if (data.id === user.id) {
-                Adapter.signIn(data)
-                  .then(data => setUser(data))
+                setCookies("user", data, { path: "/" })
                 return data
               } else return user
             })
@@ -142,12 +144,12 @@ function App () {
       <Switch>
         <Route path="/lobbies">
           <LobbyList
+              cookies={cookies.user}
               lobbies={lobbiesToDisplay()}
               onFormSubmit={handleCreateGameFormSubmit}
               onJoinGame={handleJoinGame}
               onSortClick={handleSortClick}
               onViewGameClick={handleViewGameClick}
-              user={user}
           />
         </Route>
         <Route path="/leaderboards">
@@ -155,10 +157,10 @@ function App () {
         </Route>
         <Route path="/gamepage/:id">
           <GamePage
+              cookies={cookies.user}
               onAddPoints={addPoints}
               onFinishGameClick={finishGame}
               onJoinGame={handleJoinGame}
-              user={user}
           />
         </Route>
         <Route path="/createaccount">
@@ -169,9 +171,9 @@ function App () {
         </Route>
         <Route exact path="/">
           <Home
+              cookies={cookies.user}
               onSignInSubmit={handleSignIn}
               onSignOut={handleSignOut}
-              user={user}
           />
         </Route>
       </Switch>

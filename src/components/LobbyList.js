@@ -4,7 +4,7 @@ import Game from "./Game"
 import CreateGameForm from "./CreateGameForm"
 import "../App.css"
 
-const LobbyList = ({ lobbies, onFormSubmit, onJoinGame, onSortClick, onViewGameClick, user }) => {
+const LobbyList = ({ cookies, lobbies, onFormSubmit, onJoinGame, onSortClick, onViewGameClick }) => {
   const [showForm, setShowForm] = useState(false)
 
   const handleCreateGameClick = () => {
@@ -18,13 +18,13 @@ const LobbyList = ({ lobbies, onFormSubmit, onJoinGame, onSortClick, onViewGameC
   return (
     <div className="main">
       <h2>
-        {user.name !== "" ? `${user.name}: ${user.points} points earned` : null}
+        {cookies.name !== "" ? `${cookies.name}: ${cookies.points} points earned` : null}
       </h2>
       <button onClick={handleCreateGameClick}>Create Game</button>
       {showForm
         ? <CreateGameForm
+          cookies={cookies}
           onFormSubmit={onFormSubmit}
-          user={user}
       />
         : null}
       <div className="divTable">
