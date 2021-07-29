@@ -17,9 +17,9 @@ const LobbyList = ({ lobbies, onFormSubmit, onJoinGame, onSortClick, onViewGameC
 
   return (
     <div className="main">
-      <h3>
+      <h2>
         {user ? `${user.name}: ${user.points} points earned` : null}
-      </h3>
+      </h2>
       <button onClick={handleCreateGameClick}>Create Game</button>
       {showForm
         ? <CreateGameForm

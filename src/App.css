@@ -82,6 +82,7 @@ tr, th, td {
 }
 
 .App {
+  font-family: 'Acme', sans-serif;
   padding-top: 20px;
   padding-left: 100px;
   padding-right: 100px;
