@@ -66,7 +66,7 @@ const GamePage = ({ onAddPoints, onFinishGameClick, onJoinGame, user }) => {
         {displayPlayers()}
         <h2 className="title">Room Name: {gamePage.title}</h2>
         <h2 className="rank">Rank: {gamePage.rank}</h2>
-        {user ? <h2 className="user">{user.name}</h2> : <button className="user" onClick={handleLogin}>Login</button>}
+        {user.name !== "" ? <h2 className="user">{user.name}</h2> : <button className="user" onClick={handleLogin}>Login</button>}
         <img
           src="http://i.imgur.com/MZKZOle.jpg"
           alt="Catan Board"

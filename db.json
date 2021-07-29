@@ -1,16 +1,11 @@
 {
+  "loggedInUser": {
+    "id": 1,
+    "name": "",
+    "password": "",
+    "points": 0
+  },
   "lobbies": [
-    {
-      "players": [
-        "",
-        "ZasD11",
-        "ZasD11",
-        "ZasD11"
-      ],
-      "title": "Room 12",
-      "rank": 15,
-      "id": 12
-    },
     {
       "players": [
         "",
@@ -193,7 +188,7 @@
       "id": 1,
       "name": "ZasD11",
       "password": "ivan1",
-      "points": 190
+      "points": 200
     },
     {
       "id": 2,
@@ -258,7 +253,7 @@
     {
       "name": "Osama Bin laden",
       "password": "123",
-      "points": 0,
+      "points": 10,
       "id": 12
     },
     {
@@ -302,6 +297,12 @@
       "password": "Mocacola@328",
       "points": 20,
       "id": 19
+    },
+    {
+      "name": "OsamaBinLaden",
+      "password": "yo",
+      "points": 0,
+      "id": 20
     }
   ]
 }

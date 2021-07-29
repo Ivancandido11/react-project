@@ -35,7 +35,7 @@ const CreateGameForm = ({ onFormSubmit, user }) => {
         title: "",
         rank: ""
       })
-    } else if (!user) {
+    } else if (user.name !== "") {
       alert("Please log in to create a lobby")
       history.push("/")
     } else {

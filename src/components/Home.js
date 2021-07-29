@@ -68,8 +68,8 @@ const Home = ({ onSignInSubmit, onSignOut, user }) => {
 
   return (
     <div className="main">
-      <h1>{user ? signedIn : "Welcome, please sign in!"}</h1>
-      {user ? <button onClick={onSignOut} >Sign Out</button> : notSignedIn }
+      <h1>{user.name !== "" ? signedIn : "Welcome, please sign in!"}</h1>
+      {user.name !== "" ? <button onClick={onSignOut} >Sign Out</button> : notSignedIn }
     </div>
   )
 }

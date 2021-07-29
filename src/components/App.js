@@ -21,6 +21,8 @@ function App () {
       .then(data => setLobbies(data))
     Adapter.getUsers()
       .then(data => setAllUsers(data))
+    Adapter.getLoggedInUser()
+      .then(data => setUser(data))
   }, [])
 
   const handleCreateGameFormSubmit = (newGame) => {
@@ -70,7 +72,8 @@ function App () {
   const handleSignIn = (username, password) => {
     const currentUser = allUsers.filter(loggedInUser => loggedInUser.name.toLowerCase() === username.toLowerCase())
     if (currentUser.length > 0 && currentUser[0].password === password) {
-      setUser(currentUser[0])
+      Adapter.signIn(currentUser[0])
+        .then(data => setUser(data))
     } else if (currentUser.length > 0 && currentUser[0].password !== password) {
       alert("Password is case-sensitive. Wrong password!")
     } else {
@@ -83,7 +86,10 @@ function App () {
 
   const handleViewGameClick = (id) => history.push(`/gamepage/${id}`)
 
-  const handleSignOut = () => setUser("")
+  const handleSignOut = () => {
+    Adapter.signOut()
+      .then(data => setUser(data))
+  }
 
   const lobbiesToDisplay = () => {
     if (sort === "title") {
