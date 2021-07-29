@@ -27,6 +27,7 @@ function App () {
     Adapter.submit(newGame)
       .then(data => {
         setLobbies([...lobbies, data])
+        handleJoinGame(data.id, data.players)
         history.push(`/gamepage/${data.id}`)
       })
   }
