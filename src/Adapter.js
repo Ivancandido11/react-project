@@ -1,9 +1,9 @@
-const URL = `${process.env.REACT_APP_API_URL}/lobbies/`
-const userURL = `${process.env.REACT_APP_API_URL}/users/`
+const URL = `${process.env.REACT_APP_API_URL}/lobbies`
+const userURL = `${process.env.REACT_APP_API_URL}/users`
 
 class Adapter {
   static getGamePage (id) {
-    return fetch(`${URL}${id}`)
+    return fetch(`${URL}/${id}`)
       .then(r => r.json())
   }
 
@@ -37,13 +37,13 @@ class Adapter {
       },
       body: JSON.stringify(playersObj)
     }
-    return fetch(`${URL}${id}`, configObj)
+    return fetch(`${URL}/${id}`, configObj)
       .then(r => r.json())
   }
 
   static delete (id) {
     const configObj = { method: "DELETE" }
-    return fetch(`${URL}${id}`, configObj)
+    return fetch(`${URL}/${id}`, configObj)
   }
 
   static getUsers () {
@@ -74,7 +74,7 @@ class Adapter {
       },
       body: JSON.stringify(playerObj)
     }
-    return fetch(`${userURL}${id}`, configObj)
+    return fetch(`${userURL}/${id}`, configObj)
       .then(r => r.json())
   }
 }
