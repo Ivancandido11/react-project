@@ -1,5 +1,5 @@
-const URL = "http://localhost:4000/lobbies/"
-const userURL = "http://localhost:4000/users/"
+const URL = `${process.env.REACT_APP_API_URL}/lobbies/`
+const userURL = `${process.env.REACT_APP_API_URL}/users/`
 
 class Adapter {
   static getGamePage (id) {
@@ -8,6 +8,7 @@ class Adapter {
   }
 
   static getLobbies () {
+    console.log(URL)
     return fetch(URL)
       .then(r => r.json())
   }
