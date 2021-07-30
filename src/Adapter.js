@@ -8,7 +8,6 @@ class Adapter {
   }
 
   static getLobbies () {
-    console.log(URL)
     return fetch(URL)
       .then(r => r.json())
   }

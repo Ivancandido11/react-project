@@ -13,6 +13,7 @@ import "../App.css"
 function App () {
   const [lobbies, setLobbies] = useState([])
   const [allUsers, setAllUsers] = useState([])
+  const [cookies, setCookies] = useCookies(["user"])
   const [sort, setSort] = useState("")
   const history = useHistory()
   const loggedOut = {
@@ -21,13 +22,13 @@ function App () {
     password: "",
     points: 0
   }
-  const [cookies, setCookies] = useCookies(["user", loggedOut, { path: "/" }])
 
   useEffect(() => {
     Adapter.getLobbies()
       .then(data => setLobbies(data))
     Adapter.getUsers()
       .then(data => setAllUsers(data))
+    setCookies("user", loggedOut, { path: "/" })
   }, [])
 
   const handleCreateGameFormSubmit = (newGame) => {
@@ -128,6 +129,10 @@ function App () {
       alert("Please Sign In!")
       history.push("/")
     }
+  }
+
+  if (!cookies.user) {
+    return <h2>Loading...</h2>
   }
 
   return (
