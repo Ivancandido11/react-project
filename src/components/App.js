@@ -120,7 +120,6 @@ function App () {
               } else return user
             })
             setAllUsers(updatedUsers)
-            alert("Game Finished! You got points!")
           })
       } else {
         alert("Game Finished!")
