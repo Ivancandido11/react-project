@@ -14,7 +14,6 @@ function App () {
   const [lobbies, setLobbies] = useState([])
   const [allUsers, setAllUsers] = useState([])
   const [sort, setSort] = useState("")
-  const [cookies, setCookies] = useCookies(["user"])
   const history = useHistory()
   const loggedOut = {
     id: 0,
@@ -22,6 +21,7 @@ function App () {
     password: "",
     points: 0
   }
+  const [cookies, setCookies] = useCookies(["user", loggedOut, { path: "/" }])
 
   useEffect(() => {
     Adapter.getLobbies()
