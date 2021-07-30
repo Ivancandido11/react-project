@@ -28,7 +28,9 @@ function App () {
       .then(data => setLobbies(data))
     Adapter.getUsers()
       .then(data => setAllUsers(data))
-    setCookies("user", loggedOut, { path: "/" })
+    if (!cookies.user) {
+      setCookies("user", loggedOut, { path: "/" })
+    }
   }, [])
 
   const handleCreateGameFormSubmit = (newGame) => {
