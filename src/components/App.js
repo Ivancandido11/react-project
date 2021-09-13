@@ -38,8 +38,8 @@ function App () {
       .then(data => {
         handleJoinGame(data.id, data.players)
         setLobbies([...lobbies, data])
-        history.push(`/gamepage/${data.id}`)
-        history.go(0)
+        // history.push(`/gamepage/${data.id}`)
+        // history.go(0)
       })
   }
 
@@ -98,15 +98,15 @@ function App () {
     setCookies("user", loggedOut, { path: "/" })
   }
 
-  const lobbiesToDisplay = () => {
+  const lobbiesToDisplay = (displayableLobbies) => {
     if (sort === "title") {
-      return lobbies.sort((a, b) => a[sort].localeCompare(b[sort]))
+      return displayableLobbies.sort((a, b) => a[sort].localeCompare(b[sort]))
     } else if (sort === "") {
-      return lobbies
+      return displayableLobbies
     } else if (sort === "rank") {
-      return lobbies.sort((a, b) => a[sort] - b[sort])
+      return displayableLobbies.sort((a, b) => a[sort] - b[sort])
     } else {
-      return lobbies.sort((a, b) => a[sort].filter(player => player !== "").length - b[sort].filter(player => player !== "").length)
+      return displayableLobbies.sort((a, b) => a[sort].filter(player => player !== "").length - b[sort].filter(player => player !== "").length)
     }
   }
 
@@ -151,7 +151,7 @@ function App () {
         <Route path="/lobbies">
           <LobbyList
               cookies={cookies.user}
-              lobbies={lobbiesToDisplay()}
+              lobbies={lobbiesToDisplay(lobbies)}
               onFormSubmit={handleCreateGameFormSubmit}
               onJoinGame={handleJoinGame}
               onSortClick={handleSortClick}
